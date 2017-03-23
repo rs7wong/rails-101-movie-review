@@ -2,21 +2,6 @@
     <h2>Edit Movie</h2>
 
     <hr>
-    <%= form_for @group do |f| %>
-
-    <% if @group.errors.any? %>
-        <li>Oops! Movie's name is blank!</li>
-    <% end %>
-
-    Movie
-    <%= f.text_field :title %>
-    <br>
-    Overview
-    <br>
-    <%= f.text_area :description %>
-    <br>
-
-    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-    <% end %>
+    <%= render "form"%>
 
 </div>
