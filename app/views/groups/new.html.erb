@@ -4,6 +4,11 @@
   <hr>
   <%= form_for @group do |f| %>
 
+  <% if @group.errors.any? %>
+      <li>Movie's name can't be blank.</li>
+    <% end %>
+
+
   Movie
   <%= f.text_field :title %>
   <br>
