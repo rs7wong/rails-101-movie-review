@@ -5,7 +5,7 @@
       <% if current_user && current_user.is_member_of?(@group) %>
         <label class="label label-success"> Saved! </label>
       <% else %>
-        <label class="label label-"> Unsaved </label>
+        <label class="label label-warning"> Unsaved </label>
       <% end %>
     </span>
 
