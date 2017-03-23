@@ -1,16 +1,16 @@
 <%= form_for @group do |f| %>
 
-<% if @group.errors.any? %>
-    <li>Oops! Movie's name is blank!</li>
-<% end %>
+<div class="form-group">
+    <div class="form-group string optional">
+        <%= f.label "Movie's name", :class => "string optional control-label" %>
+        <%= f.text_field :title, :class => "string optional form-control" %>
+    </div>
 
-Movie
-<%= f.text_field :title %>
-<br>
-Overview
-<br>
-<%= f.text_area :description %>
-<br>
+    <div class="form-group string optional">
+        <%= f.label "Overview", :class => "string optional control-label" %>
+        <%= f.text_area :description, :class => "string optional form-control" %>
+    </div>
 
-<%= f.submit "Submit", :disable_with => 'Submiting...' %>
+</div>
+<%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
 <% end %>
