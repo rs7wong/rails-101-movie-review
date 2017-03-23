@@ -43,6 +43,35 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  def join
+    @group = Group.find(params[:id])
+
+      if !current_user.is_member_of?(@group)
+        current_user.join!(@group)
+        flash[:notice] = "Saved success!"
+      else
+        flash[:warning] = "Have saved!"
+      end
+
+      redirect_to group_path(@group)
+   end
+
+   def quit
+     @group = Group.find(params[:id])
+
+      if current_user.is_member_of?(@group)
+        current_user.quit!(@group)
+        flash[:alert] = "Unsaved this movie!"
+      else
+        flash[:warning] = "Have not saved!"
+      end
+
+      redirect_to group_path(@group)
+    end
+
+
+
+
   private
 
   def find_group_and_check_permission
