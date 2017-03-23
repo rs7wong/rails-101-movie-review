@@ -25,7 +25,14 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     @group.update(group_params)
-    redirect_to group_path, notice: "Update Success"
+    redirect_to group_path, notice: "Update success"
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    flash[:alert] = "Movie deleted"
+    redirect_to groups_path
   end
 
   private
