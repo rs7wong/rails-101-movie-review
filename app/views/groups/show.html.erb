@@ -10,9 +10,9 @@
           <%= link_to("Save this movie", join_group_path(@group), method: :post, class:"btn btn-default") %>
       <% end %>
     </span>
-
-    <%= link_to("Review it!", new_group_post_path(@group), class: "btn btn-default pull-right")%>
-
+    <% if current_user && current_user.is_member_of?(@group) %>
+      <%= link_to("Review it!", new_group_post_path(@group), class: "btn btn-default pull-right")%>
+    <% end %>
     <% if current_user && current_user == @group.user %>
       <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
     <% end %>

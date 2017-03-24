@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+
 
   def new
     @group = Group.find(params[:group_id])
@@ -23,9 +24,12 @@ class PostsController < ApplicationController
   def update
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
-    @post.update(post_params)
 
-    redirect_to account_posts_path, notice: "Update Success"
+    if @post.update(post_params)
+      redirect_to account_posts_path, notice: "Update Success"
+    else
+      render :edit
+    end
   end
 
   def edit
@@ -44,8 +48,9 @@ class PostsController < ApplicationController
 
     private
 
+
+
     def post_params
       params.require(:post).permit(:content)
     end
-
-end
+  end
