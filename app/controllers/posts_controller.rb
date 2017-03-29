@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @post = Post.new
 
     if !current_user.is_member_of?(@group)
-      redirect_to group_path(@group), alert: "沒收藏不行哦."
+      redirect_to group_path(@group), alert: "You need to save this movie before continuing."
     end
   end
 
