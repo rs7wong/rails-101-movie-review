@@ -2,6 +2,12 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
+  def show
+    @group = Group.find(params[:group_id])
+    @post = Post.find(params[:id])
+    redirect_to group_path(@group)
+  end
+
 
   def new
     @group = Group.find(params[:group_id])
